@@ -1,0 +1,208 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Semangat Kerja Hari Ini!</title>
+        
+        <!-- Memuat Tailwind CSS untuk styling responsif -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <!-- Memuat Google Fonts: Dancing Script untuk judul elegan, Poppins untuk teks yang mudah dibaca -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: linear-gradient(135deg, #fce4ec 0%, #fff0f5 50%, #e0f2f1 100%);
+                overflow-x: hidden;
+            }
+
+            .font-elegant {
+                font-family: 'Dancing Script', cursive;
+            }
+
+            /* Animasi untuk bunga yang jatuh */
+            @keyframes falling {
+                0% {
+                    transform: translateY(-10vh) rotate(0deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translateY(110vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            .flower-petal {
+                position: fixed;
+                top: -10%;
+                z-index: 50;
+                pointer-events: none; /* Agar tidak menghalangi klik pada elemen di bawahnya */
+                user-select: none;
+                animation-name: falling;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+
+            /* Animasi mengambang untuk kartu utama */
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0px); }
+            }
+
+            .card-float {
+                animation: float 4s ease-in-out infinite;
+            }
+
+            /* Efek kaca (Glassmorphism) */
+            .glass-panel {
+                background: rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 8px 32px 0 rgba(236, 172, 190, 0.3);
+            }
+
+            /* Animasi Fade In */
+            .fade-in {
+                animation: fadeIn 1.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.95); }
+                to { opacity: 1; transform: scale(1); }
+            }
+
+            /* Hiasan Sudut */
+            .corner-flower {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                opacity: 0.7;
+                pointer-events: none;
+                z-index: 10;
+            }
+            .top-left { top: -20px; left: -20px; transform: rotate(-45deg); }
+            .bottom-right { bottom: -20px; right: -20px; transform: rotate(135deg); }
+        </style>
+    </head>
+    <body class="min-h-screen flex items-center justify-center p-4 relative">
+
+        <main class="relative z-20 max-w-2xl w-full">
+            <!-- Kartu Utama dengan efek Glassmorphism -->
+            <div class="glass-panel rounded-3xl p-8 md:p-12 text-center card-float fade-in relative overflow-hidden">
+                
+                <!-- Ornamen Bunga Sudut (SVG Statis) -->
+                <svg class="corner-flower top-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" fill="#F48FB1"/>
+                    <circle cx="50" cy="50" r="15" fill="#FFCC80"/>
+                </svg>
+                <svg class="corner-flower bottom-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" fill="#80CBC4"/>
+                    <circle cx="50" cy="50" r="15" fill="#FFF59D"/>
+                </svg>
+
+                <!-- Konten Teks -->
+                <div class="relative z-30">
+                    <span class="text-rose-400 font-medium tracking-wider uppercase text-sm mb-2 block">Teruntuk Kamu,</span>
+                    <h1 class="font-elegant text-5xl md:text-7xl text-rose-600 mb-6 drop-shadow-sm leading-tight">
+                        Semangat Kerja<br/> Hari Ini! 🌸
+                    </h1>
+                    
+                    <div class="space-y-4 text-gray-600 leading-relaxed md:text-lg mb-8">
+                        <p>
+                            Setiap keringat dan usaha yang kamu keluarkan hari ini adalah benih yang sedang kamu tanam untuk kebahagiaan di masa depan.
+                        </p>
+                        <p>
+                            Mungkin ada lelah, mungkin ada rintangan. Tapi ingatlah, bunga terindah butuh waktu dan hujan untuk mekar dengan sempurna. Tarik napas yang dalam, tersenyumlah, dan berikan versi terbaik dari dirimu hari ini.
+                        </p>
+                        <p class="font-semibold text-teal-600 mt-4">
+                            Kamu pasti bisa aldaa! ✨
+                        </p>
+                    </div>
+
+                    <!-- Tombol Interaktif -->
+                    <button onclick="showToast()" class="bg-gradient-to-r from-rose-400 to-pink-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 transform">
+                        Terima Kasih! 🌷
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Tempat Pesan Toast (Pengganti Alert) -->
+        <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-rose-500 font-medium px-6 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center space-x-2">
+            <span class="text-xl">🌼</span>
+            <span>Semoga harimu menyenangkan!</span>
+        </div>
+
+        <script>
+            // Array berisi berbagai macam emoji bunga untuk efek jatuh
+            const flowerEmojis = ['🌸', '🌺', '🌻', '🌼', '🌷', '🌹', '🪷','🌸', '🌺', '🌻', '🌼', '🌷', '🌹', '🪷','🌸', '🌺', '🌻', '🌼', '🌷', '🌹', '🪷'];
+            const maxFlowers = 40; // Batas jumlah bunga di layar secara bersamaan
+
+            function createFlowerPetal() {
+                // Mengecek agar bunga tidak terlalu banyak di memori/DOM
+                if(document.querySelectorAll('.flower-petal').length >= maxFlowers) {
+                    return;
+                }
+
+                const petal = document.createElement('div');
+                petal.classList.add('flower-petal');
+                
+                // Pilih bunga acak
+                const randomFlower = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                petal.innerText = randomFlower;
+
+                // Randomisasi posisi, ukuran, dan durasi
+                const startPosX = Math.random() * 100; // 0vw - 100vw
+                const fallDuration = Math.random() * 4 + 4; // 4s - 8s duration
+                const fontSize = Math.random() * 1.5 + 1; // 1rem - 2.5rem
+                const startDelay = Math.random() * 2; // 0s - 2s delay
+
+                petal.style.left = `${startPosX}vw`;
+                petal.style.animationDuration = `${fallDuration}s`;
+                petal.style.animationDelay = `${startDelay}s`;
+                petal.style.fontSize = `${fontSize}rem`;
+
+                document.body.appendChild(petal);
+
+                // Hapus elemen setelah animasi selesai agar tidak membebani browser
+                setTimeout(() => {
+                    petal.remove();
+                }, (fallDuration + startDelay) * 1000);
+            }
+
+            // Jalankan pembuatan bunga saat halaman dimuat
+            window.onload = () => {
+                // Burst pertama kali agar langsung ramai
+                for(let i=0; i<15; i++) {
+                    setTimeout(createFlowerPetal, i * 150);
+                }
+                
+                // Terus menerus membuat bunga berjatuhan setiap 400ms
+                setInterval(createFlowerPetal, 400);
+            };
+
+            // Fungsi untuk menampilkan pesan (menggantikan alert standar)
+            function showToast() {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+                
+                // Sembunyikan kembali setelah 3 detik
+                setTimeout(() => {
+                    toast.classList.remove('opacity-100');
+                    toast.classList.add('opacity-0');
+                }, 3000);
+
+                // Opsional: Buat efek burst bunga kecil di posisi tengah bawah
+                for(let i=0; i<5; i++) {
+                    setTimeout(createFlowerPetal, i * 100);
+                }
+            }
+        </script>
+    </body>
+    </html>
