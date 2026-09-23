@@ -1,242 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Semangat Kerja Hari Ini!</title>
-    
+
     <!-- Memuat Tailwind CSS untuk styling responsif -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Memuat Google Fonts: Dancing Script untuk judul elegan, Poppins untuk teks yang mudah dibaca -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #fff0f5 50%, #e0f2f1 100%);
-            overflow-x: hidden;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #fce4ec 0%,
+          #fff0f5 50%,
+          #e0f2f1 100%
+        );
+        overflow-x: hidden;
+      }
 
-        .font-elegant {
-            font-family: 'Dancing Script', cursive;
-        }
+      .font-elegant {
+        font-family: "Dancing Script", cursive;
+      }
 
-        /* Animasi untuk bunga yang jatuh */
-        @keyframes falling {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
+      /* Animasi untuk bunga yang jatuh */
+      @keyframes falling {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 0.8;
         }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
 
-        .flower-petal {
-            position: fixed;
-            top: -10%;
-            z-index: 40;
-            pointer-events: none; /* Agar tidak menghalangi klik pada elemen di bawahnya */
-            user-select: none;
-            animation-name: falling;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
+      .flower-petal {
+        position: fixed;
+        top: -10%;
+        z-index: 40;
+        pointer-events: none; /* Agar tidak menghalangi klik pada elemen di bawahnya */
+        user-select: none;
+        animation-name: falling;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
 
-        /* Animasi mengambang untuk kartu utama */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+      /* Animasi mengambang untuk kartu utama */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
         }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
 
-        .card-float {
-            animation: float 4s ease-in-out infinite;
-        }
+      .card-float {
+        animation: float 4s ease-in-out infinite;
+      }
 
-        /* Efek kaca (Glassmorphism) */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px 0 rgba(236, 172, 190, 0.3);
-        }
+      /* Efek kaca (Glassmorphism) */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 32px 0 rgba(236, 172, 190, 0.3);
+      }
 
-        /* Animasi Fade In */
-        .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
+      /* Animasi Fade In */
+      .fade-in {
+        animation: fadeIn 1.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        to {
+          opacity: 1;
+          transform: scale(1);
         }
+      }
 
-        /* Hiasan Sudut */
-        .corner-flower {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .top-left { top: -20px; left: -20px; transform: rotate(-45deg); }
-        .bottom-right { bottom: -20px; right: -20px; transform: rotate(135deg); }
+      /* Hiasan Sudut */
+      .corner-flower {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        opacity: 0.7;
+        pointer-events: none;
+        z-index: 10;
+      }
+      .top-left {
+        top: -20px;
+        left: -20px;
+        transform: rotate(-45deg);
+      }
+      .bottom-right {
+        bottom: -20px;
+        right: -20px;
+        transform: rotate(135deg);
+      }
     </style>
-</head>
-<body class="min-h-screen flex items-center justify-center p-4 relative">
-
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4 relative">
     <main class="relative z-20 max-w-2xl w-full">
-        <!-- Kartu Utama dengan efek Glassmorphism -->
-        <div class="glass-panel rounded-3xl p-8 md:p-12 text-center card-float fade-in relative overflow-hidden">
-            
-            <!-- Ornamen Bunga Sudut (SVG Statis) -->
-            <svg class="corner-flower top-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" fill="#F48FB1"/>
-                <circle cx="50" cy="50" r="15" fill="#FFCC80"/>
-            </svg>
-            <svg class="corner-flower bottom-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" fill="#80CBC4"/>
-                <circle cx="50" cy="50" r="15" fill="#FFF59D"/>
-            </svg>
+      <!-- Kartu Utama dengan efek Glassmorphism -->
+      <div
+        class="glass-panel rounded-3xl p-8 md:p-12 text-center card-float fade-in relative overflow-hidden"
+      >
+        <!-- Ornamen Bunga Sudut (SVG Statis) -->
+        <svg
+          class="corner-flower top-left"
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z"
+            fill="#F48FB1"
+          />
+          <circle cx="50" cy="50" r="15" fill="#FFCC80" />
+        </svg>
+        <svg
+          class="corner-flower bottom-right"
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z"
+            fill="#80CBC4"
+          />
+          <circle cx="50" cy="50" r="15" fill="#FFF59D" />
+        </svg>
 
-            <!-- Konten Teks -->
-            <div class="relative z-30">
-                <span class="text-rose-400 font-medium tracking-wider uppercase text-sm mb-2 block">Teruntuk Kamu,</span>
-                <h1 class="font-elegant text-5xl md:text-7xl text-rose-600 mb-6 drop-shadow-sm leading-tight">
-                    Semangat Kerja<br/> Hari Ini! 🌸
-                </h1>
-                
-                <div class="space-y-4 text-gray-600 leading-relaxed md:text-lg mb-8">
-                    <p>
-                        Setiap keringat dan usaha yang kamu keluarkan hari ini adalah benih yang sedang kamu tanam untuk kebahagiaan di masa depan.
-                    </p>
-                    <p>
-                        Mungkin ada lelah, mungkin ada rintangan. Tapi ingatlah, bunga terindah butuh waktu dan hujan untuk mekar dengan sempurna. Tarik napas yang dalam, tersenyumlah, dan berikan versi terbaik dari dirimu hari ini.
-                    </p>
-                    <p class="font-semibold text-teal-600 mt-4">
-                        Kamu pasti bisa aldaa! ✨
-                    </p>
-                </div>
+        <!-- Konten Teks -->
+        <div class="relative z-30">
+          <span
+            class="text-rose-400 font-medium tracking-wider uppercase text-sm mb-2 block"
+            >Teruntuk Kamu,</span
+          >
+          <h1
+            class="font-elegant text-5xl md:text-7xl text-rose-600 mb-6 drop-shadow-sm leading-tight"
+          >
+            Semangat Kerja<br />
+            Hari Ini! 🌸
+          </h1>
 
-                <!-- Tombol Interaktif -->
-                <button onclick="openModal()" class="bg-gradient-to-r from-rose-400 to-pink-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 transform">
-                    Ini Bunga Untukmu 🌸
-                </button>
-            </div>
+          <div class="space-y-4 text-gray-600 leading-relaxed md:text-lg mb-8">
+            <p>
+              Setiap keringat dan usaha yang kamu keluarkan hari ini adalah
+              benih yang sedang kamu tanam untuk kebahagiaan di masa depan.
+            </p>
+            <p>
+              Mungkin ada lelah, mungkin ada rintangan. Tapi ingatlah, bunga
+              terindah butuh waktu dan hujan untuk mekar dengan sempurna. Tarik
+              napas yang dalam, tersenyumlah, dan berikan versi terbaik dari
+              dirimu hari ini.
+            </p>
+            <p class="font-semibold text-teal-600 mt-4">
+              Kamu pasti bisa aldaa! ✨
+            </p>
+          </div>
+
+          <!-- Tombol Interaktif -->
+          <button
+            onclick="openModal()"
+            class="bg-gradient-to-r from-rose-400 to-pink-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 transform"
+          >
+            Ini Bunga Untukmu 🌸
+          </button>
         </div>
+      </div>
     </main>
 
     <!-- Pop-up Modal Bunga Lily -->
-    <div id="flowerModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div id="modalCard" class="bg-white rounded-3xl p-5 sm:p-6 max-w-sm sm:max-w-md w-full shadow-2xl transform scale-95 transition-transform duration-300 text-center relative border border-rose-100">
-            <!-- Tombol Tutup (X) -->
-            <button onclick="closeModal()" aria-label="Tutup Modal" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-100 flex items-center justify-center text-lg font-bold transition">
-                ✕
-            </button>
+    <div
+      id="flowerModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        id="modalCard"
+        class="bg-white rounded-3xl p-5 sm:p-6 max-w-sm sm:max-w-md w-full shadow-2xl transform scale-95 transition-transform duration-300 text-center relative border border-rose-100"
+      >
+        <!-- Tombol Tutup (X) -->
+        <button
+          onclick="closeModal()"
+          aria-label="Tutup Modal"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-100 flex items-center justify-center text-lg font-bold transition"
+        >
+          ✕
+        </button>
 
-            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1">Buket Lily Spesial 🌸</h3>
-            <p class="text-sm text-gray-500 mb-4">Semoga bunga ini bisa bikin kamu senang, mekar, dan penuh semangat!</p>
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1">
+          Buket Lily Spesial 🌸
+        </h3>
+        <p class="text-sm text-gray-500 mb-4">
+          Semoga bunga ini bisa bikin kamu senang, mekar, dan penuh semangat!
+        </p>
 
-            <!-- Wadah Gambar -->
-            <div class="rounded-2xl overflow-hidden shadow-md border border-rose-100 mb-5 bg-rose-50 flex justify-center">
-                <img src="bunga_lily.jpg" alt="Bunga Lily" class="w-full h-auto max-h-[60vh] object-cover rounded-2xl transition hover:scale-105 duration-500">
-            </div>
-
-            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white font-medium py-2.5 rounded-xl shadow hover:opacity-95 transition">
-                Tutup
-            </button>
+        <!-- Wadah Gambar -->
+        <div
+          class="rounded-2xl overflow-hidden shadow-md border border-rose-100 mb-5 bg-rose-50 flex justify-center"
+        >
+          <img
+            src="bunga_lily.jpg"
+            alt="Bunga Lily"
+            class="w-full h-auto max-h-[60vh] object-cover rounded-2xl transition hover:scale-105 duration-500"
+          />
         </div>
+
+        <button
+          onclick="closeModal()"
+          class="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white font-medium py-2.5 rounded-xl shadow hover:opacity-95 transition"
+        >
+          Tutup
+        </button>
+      </div>
     </div>
 
     <!-- Tempat Pesan Toast (Pengganti Alert) -->
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-rose-500 font-medium px-6 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center space-x-2">
-        <span class="text-xl">🌼</span>
-        <span>Semoga harimu menyenangkan!</span>
+    <div
+      id="toast"
+      class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-rose-500 font-medium px-6 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center space-x-2"
+    >
+      <span class="text-xl">🌼</span>
+      <span>Semoga harimu menyenangkan!</span>
     </div>
 
     <script>
-        // Array berisi berbagai macam emoji bunga untuk efek jatuh
-        const flowerEmojis = ['🌸', '🌺', '🌻', '🌼', '🌷', '🌹', '🪷'];
-        const maxFlowers = 40; // Batas jumlah bunga di layar secara bersamaan
+      // Array berisi berbagai macam emoji bunga untuk efek jatuh
+      const flowerEmojis = ["🌸", "🌺", "🌻", "🌼", "🌷", "🌹", "🪷"];
+      const maxFlowers = 40; // Batas jumlah bunga di layar secara bersamaan
 
-        function createFlowerPetal() {
-            if (document.querySelectorAll('.flower-petal').length >= maxFlowers) {
-                return;
-            }
-
-            const petal = document.createElement('div');
-            petal.classList.add('flower-petal');
-            
-            const randomFlower = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-            petal.innerText = randomFlower;
-
-            const startPosX = Math.random() * 100;
-            const fallDuration = Math.random() * 4 + 4;
-            const fontSize = Math.random() * 1.5 + 1;
-            const startDelay = Math.random() * 2;
-
-            petal.style.left = `${startPosX}vw`;
-            petal.style.animationDuration = `${fallDuration}s`;
-            petal.style.animationDelay = `${startDelay}s`;
-            petal.style.fontSize = `${fontSize}rem`;
-
-            document.body.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-            }, (fallDuration + startDelay) * 1000);
+      function createFlowerPetal() {
+        if (document.querySelectorAll(".flower-petal").length >= maxFlowers) {
+          return;
         }
 
-        // Kontrol Modal Pop-up Bunga
-        const flowerModal = document.getElementById('flowerModal');
-        const modalCard = document.getElementById('modalCard');
+        const petal = document.createElement("div");
+        petal.classList.add("flower-petal");
 
-        function openModal() {
-            flowerModal.classList.remove('opacity-0', 'pointer-events-none');
-            flowerModal.classList.add('opacity-100', 'pointer-events-auto');
-            modalCard.classList.remove('scale-95');
-            modalCard.classList.add('scale-100');
+        const randomFlower =
+          flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+        petal.innerText = randomFlower;
 
-            // Burst bunga ekstra saat membuka hadiah
-            for (let i = 0; i < 8; i++) {
-                setTimeout(createFlowerPetal, i * 100);
-            }
+        const startPosX = Math.random() * 100;
+        const fallDuration = Math.random() * 4 + 4;
+        const fontSize = Math.random() * 1.5 + 1;
+        const startDelay = Math.random() * 2;
+
+        petal.style.left = `${startPosX}vw`;
+        petal.style.animationDuration = `${fallDuration}s`;
+        petal.style.animationDelay = `${startDelay}s`;
+        petal.style.fontSize = `${fontSize}rem`;
+
+        document.body.appendChild(petal);
+
+        setTimeout(
+          () => {
+            petal.remove();
+          },
+          (fallDuration + startDelay) * 1000,
+        );
+      }
+
+      // Kontrol Modal Pop-up Bunga
+      const flowerModal = document.getElementById("flowerModal");
+      const modalCard = document.getElementById("modalCard");
+
+      function openModal() {
+        flowerModal.classList.remove("opacity-0", "pointer-events-none");
+        flowerModal.classList.add("opacity-100", "pointer-events-auto");
+        modalCard.classList.remove("scale-95");
+        modalCard.classList.add("scale-100");
+
+        // Burst bunga ekstra saat membuka hadiah
+        for (let i = 0; i < 8; i++) {
+          setTimeout(createFlowerPetal, i * 100);
         }
+      }
 
-        function closeModal() {
-            flowerModal.classList.add('opacity-0', 'pointer-events-none');
-            flowerModal.classList.remove('opacity-100', 'pointer-events-auto');
-            modalCard.classList.add('scale-95');
-            modalCard.classList.remove('scale-100');
+      function closeModal() {
+        flowerModal.classList.add("opacity-0", "pointer-events-none");
+        flowerModal.classList.remove("opacity-100", "pointer-events-auto");
+        modalCard.classList.add("scale-95");
+        modalCard.classList.remove("scale-100");
+      }
+
+      // Menutup pop-up saat mengklik area gelap di luar modal
+      flowerModal.addEventListener("click", (e) => {
+        if (e.target === flowerModal) {
+          closeModal();
         }
+      });
 
-        // Menutup pop-up saat mengklik area gelap di luar modal
-        flowerModal.addEventListener('click', (e) => {
-            if (e.target === flowerModal) {
-                closeModal();
-            }
-        });
+      // Menutup modal dengan tombol ESC keyboard
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
 
-        // Menutup modal dengan tombol ESC keyboard
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Jalankan pembuatan bunga saat halaman dimuat
-        window.onload = () => {
-            for (let i = 0; i < 15; i++) {
-                setTimeout(createFlowerPetal, i * 150);
-            }
-            setInterval(createFlowerPetal, 400);
-        };
+      // Jalankan pembuatan bunga saat halaman dimuat
+      window.onload = () => {
+        for (let i = 0; i < 15; i++) {
+          setTimeout(createFlowerPetal, i * 150);
+        }
+        setInterval(createFlowerPetal, 400);
+      };
     </script>
-</body>
+  </body>
 </html>
